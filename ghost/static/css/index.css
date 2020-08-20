@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+    background-image: url('images/ghostpost.jpg');
+    color: orangered;
+}
+
+a{
+    color: orangered;
+    font-weight: bolder;
+}
+
+a:hover{
+    color: orange;
+}
+
+button{
+    background-color: black;
+}

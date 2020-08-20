@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,25 +9,25 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <title>Ghost Post</title>
 </head>
 
 <body>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link {{tab}}" href="/" style="color: orangered;">Home</a>
+            <a class="nav-link {{tab}}" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/boasts/" style="color: orangered;">Boasts</a>
+            <a class="nav-link" href="/boasts/">Boasts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roasts/" style="color: orangered;">Roasts </a>
+            <a class="nav-link" href="/roasts/">Roasts </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/addpost/" style="color: orangered;">Create Post</a>
+            <a class="nav-link" href="/addpost/">Create Post</a>
         </li>
-       
+
     </ul>
     <div class="container">
         <h1>Welcome to Ghost Post</h1>
@@ -40,8 +41,9 @@
                     <h5 class="card-title">Roast</h5>
                     {% endif %}
                     <p class="card-text">{{ post.body }}</p>
-                    <button><a href="" class="card-link" style="color: orange;">Up Vote</a></button>
-                    <button><a href="" class="card-link" style="color: orange;">Down Vote</a></button>
+                    <p class="card-text">Votes: {{ post.total_votes }}</p>
+                    <button><a href="/upvote/{{post.id}}" class="card-link">Up Vote </a></button>
+                    <button><a href="/downvote/{{post.id}}" class="card-link">Down Vote</a></button>
                     <p class="card-text">{{ post.post_date }}</p>
                 </div>
             </div>

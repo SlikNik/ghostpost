@@ -12,11 +12,11 @@ def index(request):
 
 def boast(request):
     boasts = GhostPost.objects.filter(type_of_post=True).order_by('post_date')
-    return render(request, 'post.html', {'posts': boasts, 'tab': 'active', 'type': 'Boast'})
+    return render(request, 'post.html', {'posts': boasts, 'boast': 'active', 'type': 'Boast'})
 
 def roast(request):
     roasts = GhostPost.objects.filter(type_of_post=False).order_by('post_date')
-    return render(request, 'post.html', {'posts': roasts, 'tab': 'active', 'type': 'Roast'})
+    return render(request, 'post.html', {'posts': roasts, 'roast': 'active', 'type': 'Roast'})
 
 def create_post(request):
     if request.method == 'POST':
@@ -26,3 +26,25 @@ def create_post(request):
             return HttpResponseRedirect(reverse('createpost'))
     form = GhostPostForm()
     return render(request, 'create_post.html', {'form': form, 'tab': 'active'})
+
+def up_vote(request, id):
+    current_post = GhostPost.objects.get(id=id)
+    current_post.up_votes += 1
+    current_post.save()
+    # print(current_post)
+    try: 
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    except:
+        return HttpResponseRedirect(reverse('homepage'))
+
+
+
+def down_vote(request, id):
+    current_post = GhostPost.objects.get(id=id)
+    current_post.down_votes -= 1
+    current_post.save()
+    # print(current_post)
+    try: 
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    except:
+        return HttpResponseRedirect(reverse('homepage'))

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +9,7 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
 
     <title>Ghost Post</title>
 </head>
@@ -15,24 +17,24 @@
 <body>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="/" style="color: orangered;">Home</a>
+            <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/boasts/" style="color: orangered;">Boasts</a>
+            <a class="nav-link" href="/boasts/">Boasts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roasts/" style="color: orangered;">Roasts </a>
+            <a class="nav-link" href="/roasts/">Roasts </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{tab}}" href="/addpost/" style="color: orangered;">Create Post</a>
+            <a class="nav-link {{tab}}" href="/addpost/">Create Post</a>
         </li>
-       
+
     </ul>
     <div class="container">
-        <form action="" method="POST" style="color: orangered;">
+        <form action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" style="color: orangered;">Submit</button>
+            <button type="submit">Submit</button>
         </form>
 
     </div>

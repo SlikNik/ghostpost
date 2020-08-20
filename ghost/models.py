@@ -11,3 +11,6 @@ class GhostPost(models.Model):
     def __str__(self):
         return self.body[:7]
 
+    def total_votes(self):
+        return self.up_votes + self.down_votes
+
