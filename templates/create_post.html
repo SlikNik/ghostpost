@@ -20,6 +20,9 @@
             <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/sorted/">Sorted By Votes</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/boasts/">Boasts</a>
         </li>
         <li class="nav-item">
@@ -31,12 +34,15 @@
 
     </ul>
     <div class="container">
+        {% if key %}
+        <h1>Your post secret key ---> <a href="/post/{{key}}">{{key}}</a></h1>
+        {% else %}
         <form action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>
         </form>
-
+        {% endif %}
     </div>
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -10,42 +10,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-
     <title>Ghost Post</title>
 </head>
 
 <body>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link {{tab}}" href="/">Home</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/sorted/">Sorted By Votes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link  {{boast}}" href="/boasts/">Boasts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{roast}}" href="/roasts/">Roasts </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/addpost/">Create Post</a>
-        </li>
-
     </ul>
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                {% if post.type_of_post %}
-                <h5 class="card-title">Boast</h5>
-                {% else %}
-                <h5 class="card-title">Roast</h5>
-                {% endif %}
-                <p class="card-text">{{ post.body }}</p>
-                <p class="card-text">{{ post.post_date }}</p>
-                <button><a href="/delete/{{post.id}}" class="card-link">Delete</a></button>
-            </div>
-        </div>
+        <h1>You have enter the Graveyard</h1>
+        <h3>Post with id of {{id}} has been buried!</h3>
     </div>
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

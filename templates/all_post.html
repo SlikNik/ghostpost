@@ -34,18 +34,23 @@
 
     </ul>
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                {% if post.type_of_post %}
-                <h5 class="card-title">Boast</h5>
-                {% else %}
-                <h5 class="card-title">Roast</h5>
-                {% endif %}
-                <p class="card-text">{{ post.body }}</p>
-                <p class="card-text">{{ post.post_date }}</p>
-                <button><a href="/delete/{{post.id}}" class="card-link">Delete</a></button>
+        <h1>All {{type}} Post</h1>
+        <ul>
+            {% for post in posts %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{type}}</h5>
+                    <p class="card-text">{{ post.body }}</p>
+                    <p class="card-text">Votes: {{ post.total_votes }}</p>
+                    <button><a href="/upvote/{{post.id}}" class="card-link">Up Vote</a></button>
+                    <button><a href="/downvote/{{post.id}}" class="card-link">Down Vote</a></button>
+                    <p class="card-text">{{ post.post_date }}</p>
+                </div>
             </div>
-        </div>
+            <br>
+            {% endfor %}
+        </ul>
+
     </div>
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
